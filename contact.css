@@ -1,0 +1,128 @@
+/* ==========================================================================
+   CONTACT & BOOKING PAGE STYLES
+   ========================================================================== */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
+
+/* -------------------- Form Card -------------------- */
+.form-card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background: var(--color-midnight-light);
+}
+
+.form-card h2 { margin-bottom: 0.4rem; }
+.form-card > p { color: var(--color-ivory-dim); margin-bottom: var(--space-md); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+@media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+.field {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  color: var(--color-ivory-dim);
+}
+
+.field .required { color: var(--color-gold-bright); }
+
+.field input,
+.field select,
+.field textarea {
+  background: var(--color-midnight);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  color: var(--color-ivory);
+  transition: border-color var(--dur-fast) var(--ease-standard);
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(244, 237, 225, 0.35); }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-gold);
+}
+
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: #e8927c;
+}
+
+.field textarea { resize: vertical; min-height: 110px; }
+
+.field-error {
+  font-size: 0.78rem;
+  color: #e8927c;
+  min-height: 1em;
+}
+
+.form-footnote {
+  font-size: var(--fs-small);
+  color: var(--color-ivory-dim);
+  margin-top: var(--space-sm);
+}
+
+.form-status {
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+}
+
+/* -------------------- Info Side -------------------- */
+.contact-info-card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.contact-info-card h3 {
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+
+.contact-detail {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  align-items: flex-start;
+}
+.contact-detail .icon { font-size: 1.2rem; }
+.contact-detail p { color: var(--color-ivory-dim); font-size: 0.92rem; }
+
+.map-embed {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  aspect-ratio: 16 / 10;
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+.hours-table { width: 100%; margin-top: var(--space-sm); }
+.hours-table tr { border-bottom: 1px dashed var(--color-line); }
+.hours-table td { padding: 0.5rem 0; color: var(--color-ivory-dim); font-size: 0.92rem; }
+.hours-table td:last-child { text-align: right; color: var(--color-ivory); }

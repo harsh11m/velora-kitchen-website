@@ -1,0 +1,672 @@
+/* ==========================================================================
+   VELORA KITCHEN — GLOBAL STYLES
+   Shared design tokens, reset, layout, navigation, buttons, and footer
+   ========================================================================== */
+
+
+/* ==========================================================================
+   DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-midnight: #0c0f14;
+  --color-midnight-light: #14181f;
+  --color-midnight-lift: #1c212b;
+  --color-gold: #c9a24b;
+  --color-gold-bright: #e6c877;
+  --color-ivory: #f4ede1;
+  --color-ivory-dim: #cfc6b8;
+  --color-line: rgba(201, 162, 75, 0.18);
+  --color-overlay: rgba(12, 15, 20, 0.72);
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --fs-hero: clamp(2.8rem, 6vw, 5.2rem);
+  --fs-h1: clamp(2.2rem, 4vw, 3.4rem);
+  --fs-h2: clamp(1.8rem, 3vw, 2.6rem);
+  --fs-h3: clamp(1.3rem, 2vw, 1.7rem);
+  --fs-body: 1rem;
+  --fs-small: 0.85rem;
+  --fs-eyebrow: 0.78rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --nav-height: 84px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-med: 420ms;
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================================
+   RESET AND BASE STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background: var(--color-midnight);
+  color: var(--color-ivory);
+
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-ivory);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+p,
+li,
+address {
+  overflow-wrap: break-word;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+address {
+  color: var(--color-ivory-dim);
+  font-style: normal;
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-gold-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+/* Skip link remains hidden until reached with keyboard navigation. */
+
+.skip-link {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+
+  z-index: 1000;
+
+  padding: 0.75rem 1.25rem;
+
+  background: var(--color-gold);
+  color: var(--color-midnight);
+
+  font-weight: 700;
+
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   SHARED LAYOUT
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+
+/* Alternate section background used on interior pages. */
+
+.section-alt {
+  background: var(--color-midnight-light);
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--space-lg);
+}
+
+.section-head h2 {
+  margin-top: var(--space-sm);
+}
+
+
+/* ==========================================================================
+   EYEBROW TEXT
+   ========================================================================== */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--color-gold);
+
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 28px;
+  height: 1px;
+  flex-shrink: 0;
+
+  background: var(--color-gold);
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.9rem 2.1rem;
+
+  border: 1px solid transparent;
+  border-radius: 2px;
+
+  cursor: pointer;
+
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    background var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    filter var(--dur-fast) var(--ease-standard);
+}
+
+.btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-gold-bright),
+      var(--color-gold)
+    );
+
+  color: var(--color-midnight);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ivory);
+  border-color: var(--color-line);
+}
+
+.btn-ghost:hover {
+  color: var(--color-gold-bright);
+  border-color: var(--color-gold);
+}
+
+
+/* ==========================================================================
+   HEADER AND NAVIGATION
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  z-index: 500;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+
+  height: var(--nav-height);
+
+  background: rgba(12, 15, 20, 0.55);
+
+  border-bottom: 1px solid var(--color-line);
+
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+  transition:
+    background var(--dur-med) var(--ease-standard),
+    box-shadow var(--dur-med) var(--ease-standard);
+}
+
+.nav-wrap {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+
+/* Brand */
+
+.brand {
+  flex-shrink: 0;
+
+  color: var(--color-ivory);
+
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.brand span {
+  color: var(--color-gold);
+}
+
+
+/* Desktop navigation */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.nav-links a {
+  position: relative;
+
+  padding-block: 0.4rem;
+
+  color: var(--color-ivory-dim);
+
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--color-gold);
+
+  transition: width var(--dur-med) var(--ease-standard);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--color-ivory);
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
+
+/* Desktop reservation button */
+
+.nav-cta {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .nav-cta {
+    display: inline-flex;
+  }
+}
+
+
+/* Mobile navigation toggle */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 0.5rem;
+
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+
+  width: 24px;
+  height: 1.5px;
+
+  background: var(--color-ivory);
+
+  transform-origin: center;
+
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    opacity var(--dur-fast) var(--ease-standard);
+}
+
+
+/* Active hamburger icon */
+
+.nav-toggle--active span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-toggle--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle--active span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+
+/* Mobile navigation */
+
+@media (max-width: 859px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links--open {
+    position: fixed;
+    top: var(--nav-height);
+    right: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+
+    padding:
+      var(--space-md)
+      clamp(1.25rem, 4vw, 2.5rem);
+
+    background: rgba(12, 15, 20, 0.98);
+
+    border-bottom: 1px solid var(--color-line);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links--open a {
+    width: 100%;
+  }
+}
+
+
+/* Header state added by nav.js after scrolling. */
+
+.site-header--scrolled {
+  background: rgba(12, 15, 20, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================================================
+   INTERIOR PAGE HERO
+   ========================================================================== */
+
+.page-hero {
+  position: relative;
+
+  padding-top: calc(var(--nav-height) + var(--space-xl));
+  padding-bottom: var(--space-lg);
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(201, 162, 75, 0.12),
+      transparent 60%
+    ),
+    var(--color-midnight);
+
+  border-bottom: 1px solid var(--color-line);
+}
+
+.page-hero h1 {
+  margin-top: var(--space-sm);
+}
+
+
+/*
+  Only the descriptive paragraph directly inside the page hero container
+  receives this styling. The .eyebrow paragraph keeps its gold color.
+*/
+
+.page-hero .container > p:not(.eyebrow) {
+  max-width: 560px;
+
+  margin-top: var(--space-sm);
+  margin-inline: auto;
+
+  color: var(--color-ivory-dim);
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  padding-block: var(--space-lg) var(--space-md);
+
+  background: var(--color-midnight-light);
+
+  border-top: 1px solid var(--color-line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-lg);
+
+  padding-bottom: var(--space-lg);
+
+  border-bottom: 1px solid var(--color-line);
+}
+
+.footer-brand p {
+  max-width: 320px;
+  margin-top: var(--space-sm);
+
+  color: var(--color-ivory-dim);
+}
+
+.footer-col h4 {
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-gold);
+
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-col ul li a {
+  color: var(--color-ivory-dim);
+
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.footer-col ul li a:hover {
+  color: var(--color-gold-bright);
+}
+
+.footer-col address {
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+
+  padding-top: var(--space-md);
+
+  color: var(--color-ivory-dim);
+
+  font-size: var(--fs-small);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .section {
+    padding-block: var(--space-lg);
+  }
+
+  .page-hero {
+    padding-top: calc(var(--nav-height) + var(--space-lg));
+  }
+}

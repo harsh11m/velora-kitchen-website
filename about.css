@@ -1,0 +1,295 @@
+/* ==========================================================================
+   VELORA KITCHEN — ABOUT PAGE STYLES
+   Story, values, timeline, team, and visit information
+   ========================================================================== */
+
+
+/* ==========================================================================
+   STORY SECTION
+   ========================================================================== */
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.story-visual {
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+
+.story-visual img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.story-copy p {
+  margin-top: var(--space-sm);
+
+  color: var(--color-ivory-dim);
+}
+
+
+/* ==========================================================================
+   VALUES SECTION
+   ========================================================================== */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.value-card {
+  height: 100%;
+  padding: var(--space-md);
+
+  background: var(--color-midnight-lift);
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+
+.value-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+}
+
+.value-card .why-icon {
+  margin-bottom: var(--space-sm);
+
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.value-card h3 {
+  margin-bottom: 0.4rem;
+
+  font-size: 1.2rem;
+}
+
+.value-card p {
+  color: var(--color-ivory-dim);
+
+  font-size: 0.92rem;
+}
+
+
+/* ==========================================================================
+   TIMELINE SECTION
+   ========================================================================== */
+
+.timeline {
+  position: relative;
+
+  padding-left: var(--space-lg);
+
+  border-left: 1px solid var(--color-line);
+}
+
+.timeline-item {
+  position: relative;
+
+  padding-bottom: var(--space-lg);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+
+  position: absolute;
+  top: 0.45rem;
+  left: calc(-1 * var(--space-lg) - 5.5px);
+
+  width: 10px;
+  height: 10px;
+
+  background: var(--color-gold-bright);
+
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--color-midnight);
+}
+
+.timeline-year {
+  color: var(--color-gold-bright);
+
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.timeline-item p {
+  margin-top: 0.35rem;
+
+  color: var(--color-ivory-dim);
+}
+
+
+/* ==========================================================================
+   TEAM SECTION
+   ========================================================================== */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-photo {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1;
+
+  margin-inline: auto;
+  margin-bottom: var(--space-sm);
+
+  overflow: hidden;
+
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.team-card h3 {
+  font-size: 1.15rem;
+}
+
+.team-card span {
+  display: block;
+
+  margin-top: 0.25rem;
+
+  color: var(--color-gold);
+
+  font-size: var(--fs-small);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   VISIT INFORMATION
+   ========================================================================== */
+
+.info-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.info-card {
+  height: 100%;
+  padding: var(--space-md);
+
+  text-align: center;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+}
+
+.info-card h3 {
+  margin-bottom: 0.5rem;
+
+  color: var(--color-gold);
+
+  font-size: 1.1rem;
+}
+
+.info-card p {
+  color: var(--color-ivory-dim);
+
+  font-size: 0.92rem;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 900px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-visual {
+    max-width: 620px;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    margin-inline: auto;
+  }
+}
+
+
+@media (max-width: 780px) {
+  .values-grid,
+  .info-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 560px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-photo {
+    max-width: 200px;
+  }
+
+  .timeline {
+    padding-left: var(--space-md);
+  }
+
+  .timeline-item {
+    padding-bottom: var(--space-md);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--space-md) - 5.5px);
+  }
+}

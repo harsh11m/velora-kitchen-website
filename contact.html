@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Booking — Velora Kitchen</title>
+  <meta name="description" content="Reserve a table or get in touch with Velora Kitchen. Find our location, hours, and contact details.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">Velora <span>Kitchen</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html" aria-current="page">Contact &amp; Booking</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary nav-cta">Reserve a Table</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Get In Touch</p>
+        <h1>Contact &amp; Booking</h1>
+        <p>Reserve your table below, or reach out with any questions — we'd love to hear from you.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+
+        <!-- ============== BOOKING FORM ============== -->
+        <div class="form-card">
+          <h2>Reserve a Table</h2>
+          <p>Fill in your details and we'll confirm your reservation shortly.</p>
+
+          <form id="booking-form" novalidate>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="full-name">Full Name <span class="required">*</span></label>
+                <input type="text" id="full-name" name="fullName" placeholder="Your full name" required autocomplete="name">
+                <span class="field-error" id="full-name-error" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel">
+                <span class="field-error" id="phone-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+              <span class="field-error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="date">Reservation Date <span class="required">*</span></label>
+                <input type="date" id="date" name="date" required>
+                <span class="field-error" id="date-error" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="time">Reservation Time <span class="required">*</span></label>
+                <input type="time" id="time" name="time" required>
+                <span class="field-error" id="time-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="guests">Number of Guests <span class="required">*</span></label>
+                <select id="guests" name="guests" required>
+                  <option value="" disabled selected>Select guests</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6+">6+ Guests</option>
+                </select>
+                <span class="field-error" id="guests-error" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="occasion">Occasion (Optional)</label>
+                <select id="occasion" name="occasion">
+                  <option value="" selected>None</option>
+                  <option value="birthday">Birthday</option>
+                  <option value="anniversary">Anniversary</option>
+                  <option value="business">Business Meal</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Special Requests (Optional)</label>
+              <textarea id="message" name="message" placeholder="Allergies, seating preference, or anything else we should know"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Reservation</button>
+            <p class="form-status" id="form-status" role="status"></p>
+            <p class="form-footnote">Fields marked with <span class="required">*</span> are required. We'll confirm your table by phone or email.</p>
+          </form>
+        </div>
+
+        <!-- ============== CONTACT INFO ============== -->
+        <div>
+          <div class="contact-info-card">
+            <h3>Reach Us Directly</h3>
+            <div class="contact-detail">
+              <span class="icon" aria-hidden="true">📍</span>
+              <p>221 Baker Street, Koregaon Park, Pune, Maharashtra 411001</p>
+            </div>
+            <div class="contact-detail">
+              <span class="icon" aria-hidden="true">📞</span>
+              <p>+91 98765 43210</p>
+            </div>
+            <div class="contact-detail">
+              <span class="icon" aria-hidden="true">✉️</span>
+              <p>hello@velorakitchen.in</p>
+            </div>
+
+            <table class="hours-table">
+              <tr><td>Monday – Friday</td><td>11:00 AM – 11:00 PM</td></tr>
+              <tr><td>Saturday – Sunday</td><td>10:00 AM – 11:30 PM</td></tr>
+            </table>
+          </div>
+
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps?q=Koregaon+Park+Pune&output=embed"
+              title="Map showing Velora Kitchen location in Koregaon Park, Pune"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">Velora <span>Kitchen</span></a>
+          <p>Premium casual dining and bistro serving fresh, chef-crafted dishes in a warm, elegant setting.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact &amp; Booking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Visit Us</h4>
+          <address>
+            221 Baker Street, Koregaon Park<br>
+            Pune, Maharashtra 411001<br>
+            +91 98765 43210
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Velora Kitchen. All rights reserved.</p>
+        <p>Open Daily · 11:00 AM – 11:00 PM</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/form-validation.js"></script>
+</body>
+</html>
